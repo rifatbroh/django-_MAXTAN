@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Page</title>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <h1>This is home page</h1>
+    <h2>Author : {{author}}</h2>
+    <h2>Age : {{age}}</h2>
+    
+    <!-- conditon apply -->
+
+    {% if age > 15%}
+        <h4>You can eat the burger!</h4>
+    {%else%}
+    <h4>You can eat the mango!</h4>
+    {% endif %}
+
+    <!--for loop use-->
+
+    {%for i in courses%}
+        <h3> {{i.id}} {{i.name}} {{i.salary}} </h3>
+    {% endfor %}
+
+</body>
+</html>

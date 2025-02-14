@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Add Category - Task Management System{% endblock title %}
+
+{% block content %}
+<h1 class="text-center text-secondary m-4">Add Category</h1>
+<form method="post" style="width: 50%; margin: auto;">
+    {% csrf_token %}
+    {{ form | crispy }}
+    <div class="d-flex justify-content-center p-3">
+        <input type="submit" value="Add Category" class="btn btn-outline-primary">
+    </div>
+</form>
+{% endblock content %}

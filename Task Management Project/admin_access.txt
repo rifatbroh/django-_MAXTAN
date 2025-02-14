@@ -1,0 +1,3 @@
+Username : root
+Email address: root@email.com
+Password: 1234

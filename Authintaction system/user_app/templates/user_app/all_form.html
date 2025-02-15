@@ -1,0 +1,25 @@
+{% extends "core/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block main %}
+<h3 class="text-center text-muted m-3">{{title}}</h3>
+<form class="my-3 mx-auto" method="post" novalidate>
+    {% csrf_token %}
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                {{ form | crispy }}
+                <button class="btn btn-outline-primary mt-3 w-100" type="submit">{{btn_txt}}</button>
+
+                {% if title == 'Register' %}
+                <p class="my-2">Already have an Account? <a href="{% url 'login' %}"> Login<a></p>
+                {% elif title == 'Login' %}
+                <p class="my-2">Don't have an Account? <a href="{% url 'register' %}"> Register<a></p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock main %}

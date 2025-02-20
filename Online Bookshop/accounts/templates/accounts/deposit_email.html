@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #5cb85c;
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #333333;
+    }
+    .amount {
+      font-size: 18px;
+      font-weight: bold;
+      color: #0275d8;
+    }
+    .balance {
+      font-size: 18px;
+      font-weight: bold;
+      color: #5cb85c;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #777777;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Deposit Successful</h1>
+    <p>Dear {{user.first_name}},</p>
+    <p>We are pleased to inform you that a deposit has been successfully credited to your account <strong>{{user.username}}</strong>.</p>
+    <p><strong>Deposit Amount:</strong> <span class="amount">${{amount}}</span></p>
+    <p><strong>Current Balance:</strong> <span class="balance">${{user.account.balance}}</span></p>
+    <p>Thank you for using our services. If you have any questions or need assistance, please feel free to contact our support team at <a href="mailto:shakibahmed00777@gmail.com">shakibahmed00777@gmail.com</a>.</p>
+    <p>Best regards,</p>
+    <p><strong>Your Finance Team</strong></p>
+    <div class="footer">
+        <hr>
+      <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+      <small>This email was sent to {{user.email}}. If you didn't make this deposit, please contact support immediately.</small>
+    </div>
+  </div>
+</body>
+</html>

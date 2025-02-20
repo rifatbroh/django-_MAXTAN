@@ -1,0 +1,26 @@
+{% extends "core/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{form_title}} - Goriber-BookShop{% endblock title %}
+
+{% block main %}
+
+<h1 class="text-center text-white my-2">{{form_title}}</h1>
+
+<h1 class="text-5xl text-black text-center font-bold">{{form_title}}</h1>
+<form class="my-3 mx-auto max-w-xl" method="post">
+    {% csrf_token %}
+    <div class="container">
+        {{form | crispy}}
+        <button class="btn border-none btn-warning w-full py-2" type="submit">{{btn_title}}</button>
+        {% if btn_title == "Login" %}
+        <p class="my-2">Don't have an Account? <a class="text-blue-500 underline" href="{% url 'accounts:register' %}">Register</a></p>
+        {% elif btn_title == "Register" %}
+        <p class="my-2">Already have an Account? <a class="text-blue-500 underline" href="{% url 'accounts:login' %}">Login</a></p>
+        {% endif %}
+    </div>
+</form>
+
+
+
+{% endblock main %}

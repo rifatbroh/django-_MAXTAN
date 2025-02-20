@@ -1,0 +1,52 @@
+{% extends "core/base.html" %}
+{% load custom_filters %}
+
+{% block title %}{{author.name}} - Goriber-Bookshop{% endblock title %}
+
+{% block main %}
+
+{% comment %} profile of author  {% endcomment %}
+<section>
+    <div class="flex justify-center m-2">
+        <div class="bg-base-100 shadow md:w-96 rounded-2xl p-2">
+            <div class="flex justify-center">
+              <img
+                class="rounded-full border border-black border-opacity-100 w-56"
+                src="{{ author.photo.url }}"
+                alt="{{author.name}}" />
+            </div>
+            <div class="text-center">
+              <h2 class="text-3xl uppercase font-bold my-2">{{author.name}}</h2>
+              <h4 class="text-lg font-bold mb-2"><i class="fa-solid fa-location-dot"></i> {{author.address}}</h4>
+              <p class="text-gray-600"><span class="font-bold">Author Rank: </span>#{{author.rank}}</p>
+              <p class="text-gray-600"><span class="font-bold">Total Borrowed: </span>X{{author.total_borrowed}}</p>
+              <p class="text-gray-600 mb-2"><span class="font-bold">Popularity: </span><i class="fa-solid fa-fire-flame-curved"></i> {{author.popularity | int_to_k}}</p>
+              <hr>
+              <p class="text-gray-600"><span class="font-bold">About: </span>{{author.bio}}</p>
+            </div>
+        </div>
+    </div>    
+</section>
+
+{% comment %} author's books  {% endcomment %}
+<h1 class="text-3xl mt-8 mb-2 font-bold text-center"><i class="fa-solid fa-compass"></i> Books by {{author.name}}</h1>
+<hr>
+
+<div class="flex flex-wrap gap-6 mt-6 justify-center">
+  {% for book in books %}
+  <div class="bg-white shadow-md hover:shadow-lg transition-shadow duration-300 rounded-lg overflow-hidden w-72 h-96">
+    <a href="{% url 'book_details' book.id %}">
+      <div class="flex justify-center">
+        <img src="{{ book.photo.url }}" alt="{{ book.title }}" class="w-52 h-64 object-cover"/>
+      </div>
+      <div class="card-body p-4">
+        <h2 class="text-lg font-semibold text-gray-800">{{ book.title|truncatechars:50 }}</h2>
+        <h3 class="text-md font-bold text-black">Tk. {{book.price}}</h3>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+
+
+{% endblock main %}

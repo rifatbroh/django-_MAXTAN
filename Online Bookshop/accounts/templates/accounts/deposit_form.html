@@ -1,0 +1,21 @@
+{% extends "core/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Deposit - Goriber-BookShop{% endblock title %}
+
+{% block main %}
+
+<h1 class="text-center text-white my-2">Deposit</h1>
+
+<h1 class="text-5xl text-black text-center font-bold">Deposit</h1>
+<form class="my-3 mx-auto max-w-xl shadow p-3" method="post">
+    {% csrf_token %}
+    <div class="container">
+        {{form | crispy}}
+        <div class="flex justify-center">
+            <button class="btn border-none btn-warning py-2 my-4" type="submit">Deposit</button>
+        </div>
+    </div>
+</form>
+
+{% endblock main %}
